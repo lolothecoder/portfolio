@@ -2,7 +2,7 @@
 
 ## In progress projects:
 
-### Robotic's Competition
+### Robotics Competition
 In a team of 3 and a budget of 2250 CHF, we are tasked with creating a robot that can pick up and unload Legos in an arena. My main task is electronics.
 
 **Keywords: ROS2, Electronics, CAD (Fusion 360), 3D Printing, Laser cutting, Machine Learning, Computer Vision, Machining, Raspberry Pi, Arduino**
