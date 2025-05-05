@@ -28,6 +28,14 @@ Developped an interface for the VGA and accelerometer on the DE10-Lite FPGA boar
 
 https://github.com/user-attachments/assets/2251fd24-2530-43e8-a260-e827b5684ee8
 
+### Programming e-puck2 robot to obey commands (STM32)
+Programmed a simple mobile robot to go around in a square and avoid obstacles. Whenever the robot heard a frequency he would perform a "trick" which includes : spinning on himself, facing the source of the sound, stopping and many more.
+
+
+https://github.com/user-attachments/assets/5e29fa15-018a-4f7f-87fc-ccd04fa18bd6
+
+**Keywords: C, Multi-Threading**
+
 ## Relevant Courses
 
 ### CS-476 Embedded system design (In progress)
