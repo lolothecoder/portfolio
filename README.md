@@ -37,3 +37,11 @@ https://github.com/user-attachments/assets/2251fd24-2530-43e8-a260-e827b5684ee8
 ### MICRO-510 Embedded motor control
 
 The student will be able to design, build, and program a complete motor or actuator control electronic system. They will know how to apply motor control theory to real-world systems.
+
+###  MICRO-315 Embedded Systems and Robotics
+
+This course covers embedded systems programming: cross-compilation, the use of an FPU in microcontrollers, the use of DSP instructions, and the mechanisms available within a Real-Time Operating System. All of this is implemented in a robotics context.
+
+### EE-110 Logic systems (for MT)
+
+This course covers the fundamentals of digital systems. Based on Boolean algebra and combinational and sequential circuits, including finite state machines, methods for analyzing and synthesizing logic systems are studied and applied.
