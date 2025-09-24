@@ -5,8 +5,9 @@ In a team of 3 and a budget of 2250 CHF, we are tasked with creating a robot tha
 
 **Keywords: ROS2, Electronics, CAD (Fusion 360), 3D Printing, Laser cutting, Machine Learning, Computer Vision, Machining, Raspberry Pi, Arduino**
 
-https://github.com/user-attachments/assets/77c9235b-7c94-4b20-8cf2-09c51f903a08
+![Robotics Competittion](Assets/VVV.mp4)
 
+The video is at 2x speed.
 
 ### BARK Robot dog (EPFL AI TEAM)
 Create a robot dog based on the [DINGO Robot dog](https://github.com/Yerbert/DingoQuadruped). The dog will then be programmed to do tricks using reinforcement learning. My main task is in mechatronics.
