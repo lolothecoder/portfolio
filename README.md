@@ -1,9 +1,7 @@
 # Portfolio
 
-## In progress projects:
-
 ### Robotics Competition
-In a team of 3 and a budget of 2250 CHF, we are tasked with creating a robot that can pick up and unload Legos in an arena. My main task is electronics.
+In a team of 3 and a budget of 2250 CHF, we are tasked with creating a robot that can pick up and unload Legos in an arena. My main task was electronics and low level programming.
 
 **Keywords: ROS2, Electronics, CAD (Fusion 360), 3D Printing, Laser cutting, Machine Learning, Computer Vision, Machining, Raspberry Pi, Arduino**
 
@@ -16,8 +14,6 @@ Create a robot dog based on the [DINGO Robot dog](https://github.com/Yerbert/Din
 **Keywords: ROS, Electronics, CAD (Fusion 360), 3D Printing,**
 
 ![BARK dog](Assets/BARK.jpg)
-
-## Completed Projects
 
 ### Small mobile robot with IR sensor (Robopoly)
 
