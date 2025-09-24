@@ -5,7 +5,7 @@ In a team of 3 and a budget of 2250 CHF, we are tasked with creating a robot tha
 
 **Keywords: ROS2, Electronics, CAD (Fusion 360), 3D Printing, Laser cutting, Machine Learning, Computer Vision, Machining, Raspberry Pi, Arduino**
 
-![Robotics Competittion](Assets/VVV.mp4)
+https://github.com/user-attachments/assets/70ba68e9-a118-4017-aae4-32c4de227fd3
 
 The video is at 2x speed.
 
