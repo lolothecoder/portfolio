@@ -12,13 +12,12 @@ The video is at 2x speed.
 ### BARK Robot dog (EPFL AI TEAM)
 Led a team of 12 students where we built two open source robot dog projects from Stanford and are now designing our own custom robot.
 
-
+**Keywords: ROS, Electronics, CAD (Fusion 360), 3D Printing,**
 
 https://github.com/user-attachments/assets/932486dc-05d0-4e46-8ec2-e02e240cf38f
 
 Our modified version of Stanford's Pupper project (we added the gripper)
 
-**Keywords: ROS, Electronics, CAD (Fusion 360), 3D Printing,**
 
 ### Small mobile robot with IR sensor (Robopoly)
 
