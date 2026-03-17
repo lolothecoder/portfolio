@@ -1,7 +1,7 @@
 # Portfolio
 
 ### Robotics Competition
-In a team of 3 and a budget of 2250 CHF, we are tasked with creating an autonomous robot that can pick up and unload Legos in an arena. My main task was electronics and low level programming.
+In a team of 3 and a budget of 2250 CHF, we are tasked with creating an autonomous robot that can pick up and unload Legos in an arena. My main task was electronics, low level programming and mechanical assembly.
 
 **Keywords: ROS2, Electronics, CAD (Fusion 360), 3D Printing, Laser cutting, Machine Learning, Computer Vision, Machining, Raspberry Pi, Arduino**
 
@@ -10,7 +10,13 @@ https://github.com/user-attachments/assets/70ba68e9-a118-4017-aae4-32c4de227fd3
 The video is at 2x speed.
 
 ### BARK Robot dog (EPFL AI TEAM)
-Create a robot dog based on the [DINGO Robot dog](https://github.com/Yerbert/DingoQuadruped). The dog will then be programmed to do tricks using reinforcement learning. My main task is in mechatronics.
+Led a team of 12 students where we built two open source robot dog projects from Stanford and are now designing our own custom robot.
+
+
+
+https://github.com/user-attachments/assets/932486dc-05d0-4e46-8ec2-e02e240cf38f
+
+Our modified version of Stanford's Pupper project (we added the gripper)
 
 **Keywords: ROS, Electronics, CAD (Fusion 360), 3D Printing,**
 
