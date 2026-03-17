@@ -20,8 +20,6 @@ Our modified version of Stanford's Pupper project (we added the gripper)
 
 **Keywords: ROS, Electronics, CAD (Fusion 360), 3D Printing,**
 
-![BARK dog](Assets/BARK.jpg)
-
 ### Small mobile robot with IR sensor (Robopoly)
 
 Designed, built, wired and programmed a small mobile robot in the robotic's makerspace at EPFL. It was a great learning experience in electronics.
