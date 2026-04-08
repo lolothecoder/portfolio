@@ -27,354 +27,179 @@
 
     body {
       font-family: 'Inter', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; -webkit-font-smoothing: antialiased;
     }
 
     a { color: var(--accent); text-decoration: none; }
     a:hover { text-decoration: underline; }
 
-    /* ── NAV ────────────────────────────────────────────────── */
+    /* ── NAV ───────────────────────────────────────────────── */
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 200;
       height: var(--nav-h);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: flex; align-items: center; justify-content: space-between;
       padding: 0 clamp(1rem, 5vw, 3rem);
-      background: rgba(13, 17, 23, 0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.3s, padding 0.3s;
+      background: rgba(13, 17, 23, 0.88); backdrop-filter: blur(12px);
+      border-bottom: 1px solid transparent; transition: border-color 0.3s;
     }
     nav.scrolled { border-color: var(--border); }
-
-    .nav-name {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
+    .nav-name { font-weight: 700; font-size: 1rem; color: var(--text); letter-spacing: -0.01em; flex-shrink: 0; }
     .nav-name span { color: var(--accent); }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+    .nav-links { display: flex; align-items: center; gap: 0.25rem; }
     .nav-links a {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 0.75rem;
-      border-radius: 8px;
-      color: var(--text-muted);
-      font-size: 0.875rem;
-      font-weight: 500;
-      transition: background 0.2s, color 0.2s;
+      display: flex; align-items: center; gap: 0.4rem;
+      padding: 0.4rem 0.65rem; border-radius: 8px;
+      color: var(--text-muted); font-size: 0.82rem; font-weight: 500;
+      transition: background 0.2s, color 0.2s; white-space: nowrap;
     }
-    .nav-links a:hover {
-      background: var(--surface);
-      color: var(--text);
-      text-decoration: none;
-    }
+    .nav-links a:hover { background: var(--surface); color: var(--text); text-decoration: none; }
+    .nav-divider { width: 1px; height: 18px; background: var(--border); margin: 0 0.25rem; }
     .nav-links svg { flex-shrink: 0; }
+    @media (max-width: 760px) { .nav-anchor { display: none; } }
 
-    /* ── HERO ───────────────────────────────────────────────── */
-    #hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: calc(var(--nav-h) + 2rem) clamp(1rem, 5vw, 3rem) 4rem;
-      position: relative;
-      overflow: hidden;
+    /* ── SHARED ────────────────────────────────────────────── */
+    .section-title {
+      font-size: clamp(1.6rem, 4vw, 2.25rem); font-weight: 700;
+      letter-spacing: -0.02em; margin-bottom: 1.75rem;
     }
+    .section-wrap { padding: 5rem clamp(1rem, 5vw, 3rem); max-width: 1000px; margin: 0 auto; }
+    .tag { font-size: 0.7rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 4px; background: var(--accent-dim); color: var(--accent); letter-spacing: 0.02em; }
+    .tags { display: flex; flex-wrap: wrap; gap: 0.375rem; }
 
+    /* ── HERO ──────────────────────────────────────────────── */
+    #hero {
+      min-height: 100vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; padding: calc(var(--nav-h) + 2rem) clamp(1rem, 5vw, 3rem) 4rem;
+      position: relative; overflow: hidden;
+    }
     .hero-grid {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(var(--border) 1px, transparent 1px),
-        linear-gradient(90deg, var(--border) 1px, transparent 1px);
-      background-size: 60px 60px;
-      opacity: 0.3;
+      position: absolute; inset: 0;
+      background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 60px 60px; opacity: 0.3;
       mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
     }
-
-    .hero-content { position: relative; max-width: 640px; }
-
-    .hero-eyebrow {
-      display: inline-block;
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.25rem;
+    .hero-content { position: relative; max-width: 600px; }
+    .hero-avatar {
+      width: 260px; height: 260px; border-radius: 50%; object-fit: cover; object-position: top;
+      border: 3px solid var(--accent); box-shadow: 0 0 0 8px var(--accent-dim);
+      display: block; margin: 0 auto 1.75rem;
     }
+    .hero-eyebrow { display: inline-block; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); margin-bottom: 1rem; }
+    .hero-name { font-size: clamp(2.25rem, 6vw, 4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; margin-bottom: 0.875rem; }
+    .hero-subtitle { font-size: clamp(0.95rem, 2.2vw, 1.1rem); color: var(--text-muted); margin-bottom: 2.25rem; }
+    .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 1.75rem; border-radius: 8px; font-size: 0.95rem; font-weight: 600; transition: all 0.2s; cursor: pointer; }
+    .btn-primary { background: var(--accent); color: #0d1117; }
+    .btn-primary:hover { background: #4eedc4; text-decoration: none; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(45,212,170,0.25); }
 
-    .hero-name {
-      font-size: clamp(2.5rem, 7vw, 4.5rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
-      margin-bottom: 1rem;
-    }
+    /* ── ABOUT ─────────────────────────────────────────────── */
+    #about { padding: 5rem clamp(1rem, 5vw, 3rem); max-width: 760px; margin: 0 auto; }
+    #about .about-text p { color: var(--text-muted); font-size: 1rem; line-height: 1.8; margin-bottom: 1rem; }
+    #about .about-text p:last-child { margin-bottom: 0; }
 
-    .hero-subtitle {
-      font-size: clamp(1rem, 2.5vw, 1.2rem);
-      color: var(--text-muted);
-      margin-bottom: 2.5rem;
-      font-weight: 400;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.75rem;
-      border-radius: 8px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      transition: all 0.2s;
-      cursor: pointer;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #0d1117;
-    }
-    .btn-primary:hover {
-      background: #4eedc4;
-      text-decoration: none;
-      transform: translateY(-1px);
-      box-shadow: 0 8px 24px rgba(45, 212, 170, 0.25);
-    }
-
-    /* ── ABOUT ──────────────────────────────────────────────── */
-    #about {
-      padding: 5rem clamp(1rem, 5vw, 3rem);
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .section-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-      font-size: clamp(1.6rem, 4vw, 2.25rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 3rem;
-      align-items: start;
-    }
-
-    .about-text p {
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.8;
-      margin-bottom: 1rem;
-    }
-    .about-text p:last-child { margin-bottom: 0; }
-
-    .about-chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 1.5rem;
-    }
-
-    .about-side {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-      padding: 1.5rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      min-width: 180px;
-    }
-
-    .about-stat { text-align: center; }
-    .about-stat-num {
-      font-size: 1.75rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-    }
-    .about-stat-label {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 0.25rem;
-    }
-
-    .divider {
-      width: 1px;
-      height: 1px;
-      background: var(--border);
-      border: none;
-      margin: 0.5rem auto;
-      height: 1px;
-      width: 80%;
-    }
-
-    @media (max-width: 600px) {
-      .about-grid { grid-template-columns: 1fr; }
-      .about-side { flex-direction: row; justify-content: space-around; }
-    }
-
-    /* ── PROJECTS ───────────────────────────────────────────── */
-    #projects {
-      padding: 5rem clamp(1rem, 5vw, 3rem);
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    #projects .section-title { margin-bottom: 2.5rem; }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-
+    /* ── CARDS ─────────────────────────────────────────────── */
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
     .card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
-      display: flex;
-      flex-direction: column;
+      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+      overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+      display: flex; flex-direction: column; cursor: pointer;
     }
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-      box-shadow: 0 12px 40px rgba(45, 212, 170, 0.08);
+    .card:hover { transform: translateY(-4px); border-color: var(--accent); box-shadow: 0 12px 40px rgba(45,212,170,0.1); }
+    .card-media { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #0a0e13; }
+    .card-media video, .card-media img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .card:hover .card-media video, .card:hover .card-media img { transform: scale(1.03); }
+    .card-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,17,23,0.65) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.25s;
+      display: flex; align-items: flex-end; justify-content: center; padding-bottom: 0.75rem;
     }
+    .card:hover .card-overlay { opacity: 1; }
+    .card-overlay-hint { font-size: 0.73rem; font-weight: 600; color: var(--text); background: rgba(45,212,170,0.18); border: 1px solid rgba(45,212,170,0.5); border-radius: 20px; padding: 0.25rem 0.75rem; backdrop-filter: blur(4px); }
+    .card-body { padding: 1.1rem 1.25rem 1.25rem; display: flex; flex-direction: column; flex: 1; }
+    .card-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.35rem; color: var(--text); letter-spacing: -0.01em; }
+    .card-desc { font-size: 0.835rem; color: var(--text-muted); line-height: 1.55; flex: 1; margin-bottom: 0.8rem; }
+    .card-meta { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.5rem; }
 
-    .card-media {
-      position: relative;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      background: #0a0e13;
-    }
+    /* ── EXPERIENCE ────────────────────────────────────────── */
+    .timeline { position: relative; padding-left: 1.75rem; }
+    .timeline::before { content: ''; position: absolute; left: 3px; top: 10px; bottom: 10px; width: 2px; background: var(--border); }
+    .timeline-item { position: relative; padding-bottom: 2.25rem; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot { position: absolute; left: -1.75rem; top: 6px; width: 10px; height: 10px; border-radius: 50%; background: var(--border); border: 2px solid var(--bg); }
+    .timeline-item.current .timeline-dot { background: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
+    .timeline-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; transition: border-color 0.2s; }
+    .timeline-card:hover { border-color: rgba(45,212,170,0.35); }
+    .timeline-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+    .timeline-role { font-size: 0.95rem; font-weight: 700; }
+    .timeline-company { font-size: 0.82rem; font-weight: 600; color: var(--accent); margin-top: 0.1rem; }
+    .timeline-badge { font-size: 0.68rem; font-weight: 600; padding: 0.15rem 0.5rem; border-radius: 4px; background: var(--accent-dim); color: var(--accent); white-space: nowrap; align-self: flex-start; }
+    .timeline-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 0.75rem; }
+    .timeline-bullets { list-style: none; padding: 0; }
+    .timeline-bullets li { font-size: 0.855rem; color: var(--text-muted); line-height: 1.65; margin-bottom: 0.3rem; padding-left: 1rem; position: relative; }
+    .timeline-bullets li::before { content: '-'; position: absolute; left: 0; color: var(--accent); opacity: 0.7; font-weight: 700; }
+    .timeline-subroles { margin-top: 0.75rem; }
+    .subrole { padding-top: 0.75rem; border-top: 1px solid var(--border); margin-top: 0.75rem; }
+    .subrole:first-child { border-top: none; margin-top: 0; padding-top: 0; }
+    .subrole-title { font-size: 0.875rem; font-weight: 600; color: var(--text); margin-bottom: 0.1rem; }
+    .subrole-date { font-size: 0.75rem; color: var(--text-muted); margin-bottom: 0.5rem; }
 
-    .card-media video,
-    .card-media img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s;
-    }
-    .card:hover .card-media video,
-    .card:hover .card-media img {
-      transform: scale(1.03);
-    }
+    /* ── SKILLS ────────────────────────────────────────────── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; }
+    .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+    .skill-card-title { font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.875rem; display: flex; align-items: center; gap: 0.5rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+    .skill-tag { font-size: 0.78rem; font-weight: 500; padding: 0.3rem 0.65rem; border-radius: 6px; background: var(--bg); color: var(--text-muted); border: 1px solid var(--border); }
 
-    .card-body {
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
+    /* ── INTERESTS ─────────────────────────────────────────── */
+    .interests-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.5rem; }
+    .interest-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+    .interest-img { aspect-ratio: 16/9; overflow: hidden; cursor: pointer; }
+    .interest-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.4s; }
+    .interest-card:hover .interest-img img { transform: scale(1.03); }
+    .interest-body { padding: 1.25rem; }
+    .interest-title { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .interest-desc { font-size: 0.855rem; color: var(--text-muted); line-height: 1.65; }
 
-    .card-title {
-      font-size: 1rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--text);
-      letter-spacing: -0.01em;
-    }
+    /* ── IMAGE LIGHTBOX ────────────────────────────────────── */
+    .lightbox { position: fixed; inset: 0; z-index: 400; display: flex; align-items: center; justify-content: center; padding: clamp(0.75rem, 3vw, 2rem); opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+    .lightbox.open { opacity: 1; pointer-events: all; }
+    .lightbox-backdrop { position: absolute; inset: 0; background: rgba(1,4,9,0.92); backdrop-filter: blur(8px); cursor: pointer; }
+    .lightbox-img { position: relative; max-width: 90vw; max-height: 88vh; border-radius: 10px; display: block; box-shadow: 0 24px 80px rgba(0,0,0,0.7); }
+    .lightbox-close { position: fixed; top: 1rem; right: 1rem; z-index: 10; width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: color 0.2s, border-color 0.2s; }
+    .lightbox-close:hover { color: var(--text); border-color: var(--text-muted); }
 
-    .card-desc {
-      font-size: 0.875rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-      flex: 1;
-      margin-bottom: 1rem;
-    }
+    /* ── MODAL ─────────────────────────────────────────────── */
+    .modal { position: fixed; inset: 0; z-index: 300; display: flex; align-items: center; justify-content: center; padding: clamp(0.75rem, 3vw, 2rem); opacity: 0; pointer-events: none; transition: opacity 0.25s; }
+    .modal.open { opacity: 1; pointer-events: all; }
+    .modal-backdrop { position: absolute; inset: 0; background: rgba(1,4,9,0.87); backdrop-filter: blur(6px); cursor: pointer; }
+    .modal-box { position: relative; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; width: 100%; max-width: 780px; max-height: 90vh; overflow-y: auto; transform: translateY(16px) scale(0.98); transition: transform 0.25s; }
+    .modal.open .modal-box { transform: translateY(0) scale(1); }
+    .modal-close { position: absolute; top: 0.875rem; right: 0.875rem; z-index: 10; width: 30px; height: 30px; border-radius: 7px; border: 1px solid var(--border); background: var(--bg); color: var(--text-muted); font-size: 1rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: color 0.2s, border-color 0.2s; }
+    .modal-close:hover { color: var(--text); border-color: var(--text-muted); }
+    .modal-media-wrap { position: relative; background: #000; border-radius: 16px 16px 0 0; overflow: hidden; }
+    .modal-media-wrap video { width: 100%; display: block; max-height: 52vh; background: #000; }
+    .modal-media-wrap img { width: 100%; display: block; max-height: 52vh; object-fit: contain; background: #000; }
+    .modal-gallery-nav { display: flex; align-items: center; justify-content: center; gap: 0.75rem; padding: 0.6rem 1rem; background: var(--bg); border-bottom: 1px solid var(--border); }
+    .modal-gallery-nav.hidden { display: none; }
+    .modal-nav-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text); cursor: pointer; font-size: 0.85rem; padding: 0.3rem 0.75rem; border-radius: 6px; transition: background 0.15s, border-color 0.15s; }
+    .modal-nav-btn:hover { background: var(--surface-hover); border-color: var(--accent); }
+    .modal-nav-count { font-size: 0.78rem; color: var(--text-muted); min-width: 3rem; text-align: center; }
+    .modal-content { padding: 1.5rem; }
+    .modal-title { font-size: 1.2rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.5rem; }
+    .modal-meta { font-size: 0.78rem; color: var(--text-muted); margin-bottom: 1rem; }
+    .modal-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.78; white-space: pre-wrap; margin-bottom: 1.25rem; }
+    .modal-link { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 0.75rem; font-size: 0.85rem; font-weight: 600; color: var(--accent); transition: gap 0.2s; }
+    .modal-link:hover { gap: 0.6rem; text-decoration: none; }
+    .modal-box::-webkit-scrollbar { width: 5px; }
+    .modal-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
 
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.375rem;
-      margin-top: auto;
-    }
-
-    .tag {
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
-      background: var(--accent-dim);
-      color: var(--accent);
-      letter-spacing: 0.02em;
-    }
-
-    .card-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      margin-top: 0.875rem;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--accent);
-      transition: gap 0.2s;
-    }
-    .card-link:hover {
-      gap: 0.6rem;
-      text-decoration: none;
-    }
-
-    /* ── FOOTER ─────────────────────────────────────────────── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 2.5rem clamp(1rem, 5vw, 3rem);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .footer-copy {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 1rem;
-    }
-    .footer-links a {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      font-weight: 500;
-      transition: color 0.2s;
-    }
-    .footer-links a:hover {
-      color: var(--accent);
-      text-decoration: none;
-    }
+    /* ── FOOTER ────────────────────────────────────────────── */
+    footer { border-top: 1px solid var(--border); padding: 2.5rem clamp(1rem, 5vw, 3rem); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+    .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+    .footer-links { display: flex; gap: 1rem; }
+    .footer-links a { font-size: 0.8rem; color: var(--text-muted); font-weight: 500; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--accent); text-decoration: none; }
   </style>
 </head>
 <body>
@@ -383,16 +208,18 @@
   <nav id="main-nav">
     <span class="nav-name">Loïc <span>Finette</span></span>
     <div class="nav-links">
+      <a href="#projects" class="nav-anchor">Projects</a>
+      <a href="#experience" class="nav-anchor">Experience</a>
+      <a href="#skills" class="nav-anchor">Skills</a>
+      <a href="#events" class="nav-anchor">Events</a>
+      <a href="#interests" class="nav-anchor">Interests</a>
+      <div class="nav-divider"></div>
       <a href="https://github.com/lolothecoder" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
-        </svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.682-.217.682-.482 0-.237-.009-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0 1 12 6.836a9.59 9.59 0 0 1 2.504.337c1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.202 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.163 22 16.418 22 12c0-5.523-4.477-10-10-10z"/></svg>
         GitHub
       </a>
       <a href="https://www.linkedin.com/in/lo%C3%AFc-finette" target="_blank" rel="noopener">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-          <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-        </svg>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
         LinkedIn
       </a>
     </div>
@@ -402,212 +229,491 @@
   <section id="hero">
     <div class="hero-grid" aria-hidden="true"></div>
     <div class="hero-content">
+      <img src="Assets/Profile.jpg" alt="Loïc Finette" class="hero-avatar" />
       <span class="hero-eyebrow">Portfolio</span>
       <h1 class="hero-name">Loïc Finette</h1>
-      <p class="hero-subtitle">EPFL Robotics Master's Student &nbsp;·&nbsp; Electronics Engineering Intern at Melexis</p>
+      <p class="hero-subtitle">EPFL Robotics Master's Student</p>
       <a href="#projects" class="btn btn-primary">
         View Projects
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about">
-    <p class="section-label">About</p>
-    <h2 class="section-title">Hardware meets firmware</h2>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>I am an EPFL Robotics Master's student with a minor in Computer Science. I am naturally curious about complex systems and enjoy tinkering with the intersection of hardware and firmware to understand how they function.</p>
-        <p>My professional experience includes a role as a Test System Intern at ONWARD Medical. I am currently an Electronics Engineering Intern at Melexis, where I integrate magnetic sensors into edge-AI capable wireless devices.</p>
-        <p>On campus, I lead a team of 12 for the EPFL AI Team, overseeing the design and development of an autonomous robot dog. I am also an electronics engineer for Xplore, contributing to the avionics and sensor systems of a Mars rover for the European Rover Challenge.</p>
-        <p>In my free time, I enjoy woodworking and hiking.</p>
-        <div class="about-chips">
-          <span class="tag">ROS2</span>
-          <span class="tag">VHDL</span>
-          <span class="tag">Embedded C</span>
-          <span class="tag">Python</span>
-          <span class="tag">Electronics</span>
-          <span class="tag">CAD</span>
-          <span class="tag">Machine Learning</span>
-          <span class="tag">Computer Vision</span>
+    <h2 class="section-title">About me</h2>
+    <div class="about-text">
+      <p>I am an EPFL Robotics Master's student with a minor in Computer Science. I have a passion for robotics systems and I enjoy tinkering with the intersection of hardware and firmware to understand how they function.</p>
+      <p>I am currently an Electronics Engineering Intern at Melexis, designing PCBs for wearable medical applications. On campus, I lead a team of 12 for the EPFL AI Team building an autonomous quadruped robot, and contribute to the avionics and sensor systems to Xplore's Mars rover for the European Rover Challenge.</p>
+      <p>In my free time, I enjoy woodworking and hiking.</p>
+      <p>I am actively looking for a first industry role in Robotics, Electronics, or ideally both.</p>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects" class="section-wrap" style="max-width:1200px">
+    <h2 class="section-title">Selected projects</h2>
+    <div class="card-grid">
+
+      <!-- 1. BARK -->
+      <div class="card" data-id="bark">
+        <div class="card-media">
+          <video muted loop playsinline preload="none" data-lazy><source src="Assets/BARK_promotional.mp4" type="video/mp4"/></video>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">BARK — EPFL AI Team</h3>
+          <p class="card-desc">Team lead for an autonomous quadruped robotics project. 12 students, 10K CHF budget, built Stanford's Pupper and DINGO, now designing a custom robot called Byte.</p>
+          <div class="tags"><span class="tag">ROS</span><span class="tag">Reinforcement Learning</span><span class="tag">Electronics</span><span class="tag">CAD</span></div>
         </div>
       </div>
-      <div class="about-side">
-        <div class="about-stat">
-          <div class="about-stat-num">8+</div>
-          <div class="about-stat-label">Projects</div>
+
+      <!-- 2. Robotics Competition -->
+      <div class="card" data-id="robotics">
+        <div class="card-media">
+          <video muted loop playsinline preload="none" data-lazy><source src="https://github.com/lolothecoder/BARK_Documentation/releases/download/v1.0/VeniVidiVici.mp4" type="video/mp4"/></video>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
         </div>
-        <hr class="divider" />
-        <div class="about-stat">
-          <div class="about-stat-num">2</div>
-          <div class="about-stat-label">Internships</div>
+        <div class="card-body">
+          <h3 class="card-title">Autonomous Robotics Competition</h3>
+          <p class="card-desc">Autonomous robot that picks up and unloads Legos. Team of 3, 2250 CHF budget. Led electronics and firmware.</p>
+          <div class="tags"><span class="tag">ROS2</span><span class="tag">Raspberry Pi</span><span class="tag">Computer Vision</span><span class="tag">Arduino</span></div>
         </div>
-        <hr class="divider" />
-        <div class="about-stat">
-          <div class="about-stat-num">EPFL</div>
-          <div class="about-stat-label">Robotics MSc</div>
+      </div>
+
+      <!-- 3. EPFL Xplore -->
+      <div class="card" data-id="xplore">
+        <div class="card-media">
+          <img src="Assets/Xplore_Lyra_front.png" alt="EPFL Xplore Avionics PCB" loading="lazy"/>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Mars Rover Avionics - EPFL Xplore</h3>
+          <p class="card-desc">Redesigned the central Avionics PCB for a 60-person Mars rover team.</p>
+          <div class="tags"><span class="tag">STM32</span><span class="tag">micro-ROS</span><span class="tag">PCB Design</span><span class="tag">Altium</span></div>
+        </div>
+      </div>
+
+      <!-- 4. Robopoly -->
+      <div class="card" data-id="robopoly">
+        <div class="card-media">
+          <video muted loop playsinline preload="none" data-lazy><source src="Assets/Robopoly.mp4" type="video/mp4"/></video>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Small Mobile Robot — Robopoly</h3>
+          <p class="card-desc">Mobile robot with IR sensors, built from scratch at EPFL's robotics makerspace.</p>
+          <div class="tags"><span class="tag">Arduino</span><span class="tag">Electronics</span><span class="tag">CAD</span></div>
+        </div>
+      </div>
+
+      <!-- 5. Drone -->
+      <div class="card" data-id="drone">
+        <div class="card-media">
+          <video muted loop playsinline preload="none" data-lazy><source src="Assets/drone.mp4" type="video/mp4"/></video>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Autonomous Drone Navigation</h3>
+          <p class="card-desc">Drone navigates a maze, lands on a pad, and returns to start. I designed the FSM. Team of 5.</p>
+          <div class="tags"><span class="tag">FSM</span><span class="tag">Dijkstra</span><span class="tag">Cost Map</span><span class="tag">Python</span></div>
+        </div>
+      </div>
+
+      <!-- 6. FPGA -->
+      <div class="card" data-id="fpga">
+        <div class="card-media">
+          <video muted loop playsinline preload="none" data-lazy><source src="Assets/vhdl.mp4" type="video/mp4"/></video>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Accelerometer &amp; VGA for FPGA</h3>
+          <p class="card-desc">VHDL interface for VGA and accelerometer on DE10-Lite. Now part of EPFL's Digital Logic curriculum.</p>
+          <div class="tags"><span class="tag">VHDL</span><span class="tag">SPI</span><span class="tag">VGA</span><span class="tag">FPGA</span></div>
+        </div>
+      </div>
+
+      <!-- 7. Thymio -->
+      <div class="card" data-id="thymio">
+        <div class="card-media">
+          <video muted loop playsinline preload="none" data-lazy><source src="Assets/Thymio.mp4" type="video/mp4"/></video>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Autonomous Mobile Robot</h3>
+          <p class="card-desc">Robot that navigates and re-localizes itself even when moved or camera-blocked. Led localization and CV.</p>
+          <div class="tags"><span class="tag">Kalman Filter</span><span class="tag">Dijkstra</span><span class="tag">Computer Vision</span></div>
+        </div>
+      </div>
+
+      <!-- 8. VR -->
+      <div class="card" data-id="vr">
+        <div class="card-media">
+          <video muted loop playsinline preload="none" data-lazy><source src="Assets/VR.mp4" type="video/mp4"/></video>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">VR Game with Haptic Feedback</h3>
+          <p class="card-desc">Unity VR game with physical haptic controllers for Oculus Quest 2. Team of 4.</p>
+          <div class="tags"><span class="tag">Unity</span><span class="tag">C#</span><span class="tag">Haptics</span><span class="tag">Oculus Quest 2</span></div>
+        </div>
+      </div>
+
+      <!-- 9. ADA -->
+      <div class="card" data-id="ada">
+        <div class="card-media">
+          <img src="Assets/ADA.png" alt="Applied Data Analysis project" loading="lazy"/>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
+        </div>
+        <div class="card-body">
+          <h3 class="card-title">Applied Data Analysis — Movies</h3>
+          <p class="card-desc">OLS regression analysis of domestic vs. foreign market splits for American films.</p>
+          <div class="tags"><span class="tag">Data Analysis</span><span class="tag">OLS Regression</span><span class="tag">Python</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="section-wrap">
+    <h2 class="section-title">Professional experience</h2>
+    <div class="timeline">
+
+      <div class="timeline-item current">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div><div class="timeline-role">Electronic Engineer Intern</div><div class="timeline-company">Melexis</div></div>
+            <span class="timeline-badge">Current · Internship</span>
+          </div>
+          <div class="timeline-meta">Mar 2026 – Present · Bevaix, Neuchâtel · On-site</div>
+          <ul class="timeline-bullets">
+            <li>Designing high-density PCBs for wearable medical applications, prioritizing miniaturization, signal integrity, and low-level firmware development.</li>
+            <li>Optimizing mechanical enclosures via 3D printing and injection molding.</li>
+          </ul>
+          <div class="tags" style="margin-top:0.875rem">
+            <span class="tag">Altium Designer</span><span class="tag">PCB Design</span><span class="tag">Injection Molding</span><span class="tag">DFM</span><span class="tag">Embedded Firmware</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div><div class="timeline-role">Test System Intern</div><div class="timeline-company">ONWARD Medical</div></div>
+            <span class="timeline-badge">Internship</span>
+          </div>
+          <div class="timeline-meta">Aug 2025 – Feb 2026 · 7 months · Lausanne · On-site</div>
+          <ul class="timeline-bullets">
+            <li>Reduced testing cycle time by 33% by improving firmware that automated data collection.</li>
+            <li>Designed and prototyped 3 custom PCB test boards in Altium Designer, managing the full cycle from schematic capture to hardware validation with manufacturers.</li>
+            <li>Developed a comprehensive test strategy and validation protocols within a regulated medical device environment.</li>
+            <li>Performed exploratory data analysis on production data in Python, uncovering previously unidentified failure modes and conducting root cause analysis (RCA).</li>
+            <li>Collaborated in an Agile environment, participating in Scrum ceremonies and sprint boards.</li>
+          </ul>
+          <div class="tags" style="margin-top:0.875rem">
+            <span class="tag">Altium Designer</span><span class="tag">Python</span><span class="tag">PCB Design</span><span class="tag">Agile/Scrum</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item current">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div><div class="timeline-role">Electronics Engineer</div><div class="timeline-company">EPFL Xplore</div></div>
+            <span class="timeline-badge">Current · Part-time</span>
+          </div>
+          <div class="timeline-meta">Sep 2025 – Present · EPFL · Hybrid</div>
+          <ul class="timeline-bullets">
+            <li>Collaborated within a 60+ person team to develop a Mars-style rover for the European Rover Challenge (ERC) in Poland.</li>
+            <li>Redesigned the main Avionics board as the rover's central hub, ensuring all sensors and systems communicate via Ethernet, USB-C, SPI, USART and I2C.</li>
+            <li>Programmed STM32 microcontrollers using micro-ROS for direct hardware-to-CPU communication.</li>
+          </ul>
+          <div class="tags" style="margin-top:0.875rem">
+            <span class="tag">STM32</span><span class="tag">micro-ROS</span><span class="tag">PCB Design</span><span class="tag">Altium Designer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item current">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div><div class="timeline-role">EPFL AI Team</div><div class="timeline-company">Quadruped Robotics</div></div>
+            <span class="timeline-badge">Current · Part-time</span>
+          </div>
+          <div class="timeline-meta">Feb 2025 – Present · Lausanne · On-site</div>
+          <div class="timeline-subroles">
+            <div class="subrole">
+              <div class="subrole-title">Quadruped Robot Project Lead</div>
+              <div class="subrole-date">Aug 2025 – Present</div>
+              <ul class="timeline-bullets">
+                <li>Led a team of 12 students to build two quadruped robots: Stanford's Pupper and DINGO. We are now working on our own custom quadruped called Byte</li>
+                <li>Managed a 10,000 CHF budget, deciding on motors, sensors, and structural components.</li>
+                <li>Oversaw system-level design, ensuring mechanical, electronics, and software components work together.</li>
+                <li>Designed a carbon fibre leg and created the first version of our Power Distribution Board</li>
+                <li>Created and maintained the team's technical documentation website.</li>
+              </ul>
+            </div>
+            <div class="subrole">
+              <div class="subrole-title">Quadruped Robotics Engineer</div>
+              <div class="subrole-date">Feb 2025 – Aug 2025</div>
+              <ul class="timeline-bullets">
+                <li>3D printed, wired, soldered, and assembled Stanford's DINGO quadruped robot.</li>
+                <li>Implemented ROS for real-time motor control and sensor fusion.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="tags" style="margin-top:0.875rem">
+            <span class="tag">ROS</span><span class="tag">3D Printing</span><span class="tag">CAD</span><span class="tag">Project Management</span><span class="tag">Systems Engineering</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div><div class="timeline-role">Student Assistant — Cloud &amp; IoT</div><div class="timeline-company">HEC Lausanne</div></div>
+            <span class="timeline-badge">Part-time</span>
+          </div>
+          <div class="timeline-meta">Feb 2025 – Jun 2025 · Lausanne · On-site</div>
+          <ul class="timeline-bullets">
+            <li>Helped students work through cloud and data concepts for weekly coursework and assignments.</li>
+            <li>Mentored teams on final IoT projects, connecting physical devices to the cloud.</li>
+            <li>Graded assignments and provided practical feedback on code and data models.</li>
+          </ul>
+          <div class="tags" style="margin-top:0.875rem">
+            <span class="tag">Cloud Computing</span><span class="tag">Flask</span><span class="tag">IoT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div><div class="timeline-role">Student Assistant — Digital Logic</div><div class="timeline-company">EPFL</div></div>
+            <span class="timeline-badge">Part-time</span>
+          </div>
+          <div class="timeline-meta">Sep 2024 – Feb 2025 · EPFL · On-site</div>
+          <ul class="timeline-bullets">
+            <li>Guided students through weekly labs on logic gates, circuit design, and hardware fundamentals.</li>
+            <li>Developed new course assignments and custom VHDL drivers for student projects.</li>
+            <li>Graded exams and final projects with feedback on bug fixes and design improvements.</li>
+          </ul>
+          <div class="tags" style="margin-top:0.875rem">
+            <span class="tag">VHDL</span><span class="tag">Digital Logic</span><span class="tag">FPGA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div><div class="timeline-role">Private Tutor</div><div class="timeline-company">Breaking Smart®</div></div>
+            <span class="timeline-badge">Part-time</span>
+          </div>
+          <div class="timeline-meta">Oct 2022 – Jul 2025 · 2 yrs 10 mos · Remote</div>
+          <ul class="timeline-bullets">
+            <li>Mentored students in Mathematics, Physics, and Computer Science.</li>
+            <li>Simplified complex topics such as calculus, mechanics, and programming logic for various learning levels.</li>
+          </ul>
+          <div class="tags" style="margin-top:0.875rem">
+            <span class="tag">Mathematics</span><span class="tag">Physics</span><span class="tag">Computer Science</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div><div class="timeline-role">Robotics &amp; Coding Teacher</div><div class="timeline-company">Futurekids</div></div>
+            <span class="timeline-badge">Part-time</span>
+          </div>
+          <div class="timeline-meta">Jun 2020 – Feb 2025 · 4 yrs 9 mos · Lausanne · On-site</div>
+          <ul class="timeline-bullets">
+            <li>Taught robotics and coding to students aged 5–16, using LEGO EV3 and Spike Prime.</li>
+            <li>Guided students through game development in Unity and Roblox (C# / Lua).</li>
+          </ul>
+          <div class="tags" style="margin-top:0.875rem">
+            <span class="tag">Robotics</span><span class="tag">Unity</span><span class="tag">Python</span><span class="tag">LEGO EV3</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-card">
+          <div class="timeline-header">
+            <div><div class="timeline-role">Engineering Participant</div><div class="timeline-company">SBB CFF FFS</div></div>
+            <span class="timeline-badge">Program</span>
+          </div>
+          <div class="timeline-meta">Sep 2024 · Murten, Fribourg · On-site</div>
+          <ul class="timeline-bullets">
+            <li>4-day program exploring engineering and technology in the Swiss railway industry.</li>
+            <li>Technical tours of Lausanne station, cable tunnels, and the Lötschberg Base Tunnel.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="section-wrap">
+    <h2 class="section-title">Skills &amp; technologies</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          Hardware &amp; EDA Tools
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Altium Designer</span><span class="skill-tag">KiCAD</span>
+          <span class="skill-tag">LTSpice</span><span class="skill-tag">Fusion 360</span>
+          <span class="skill-tag">AutoCAD</span><span class="skill-tag">Blender</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          Embedded &amp; Languages
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">C</span><span class="skill-tag">C++</span>
+          <span class="skill-tag">Python</span><span class="skill-tag">Assembly</span>
+          <span class="skill-tag">VHDL</span><span class="skill-tag">Verilog</span>
+          <span class="skill-tag">MatLab</span><span class="skill-tag">Java</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          Robotics &amp; DevOps
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">ROS2</span><span class="skill-tag">Git</span>
+          <span class="skill-tag">Docker</span><span class="skill-tag">Visual Studio Code</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+          Lab &amp; Fabrication
+        </div>
+        <div class="skill-tags">
+          <span class="skill-tag">Oscilloscope</span><span class="skill-tag">DMM</span>
+          <span class="skill-tag">Soldering</span><span class="skill-tag">3D Printing</span>
+          <span class="skill-tag">Laser Cutting</span><span class="skill-tag">Machining</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects">
-    <p class="section-label">Work</p>
-    <h2 class="section-title">Selected projects</h2>
-    <div class="projects-grid">
+  <!-- HACKATHONS & EVENTS -->
+  <section id="events" class="section-wrap" style="max-width:1200px">
+    <h2 class="section-title">Hackathons &amp; events</h2>
+    <div class="card-grid">
 
-      <!-- 1. Robotics Competition -->
-      <div class="card">
+      <!-- 2026 events first -->
+      <div class="card" data-id="eeg-hackathon">
         <div class="card-media">
-          <video muted loop playsinline preload="none" data-lazy>
-            <source src="Assets/RoboticsCompetition.mp4" type="video/mp4" />
-          </video>
+          <img src="Assets/hackathon_events/EEG_team.jpg" alt="London Neurotech Hackathon" loading="lazy"/>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Autonomous Robotics Competition</h3>
-          <p class="card-desc">Built an autonomous robot in a team of 3 (budget: 2250 CHF) capable of picking up and unloading Legos in an arena. Led electronics and low-level programming.</p>
-          <div class="tags">
-            <span class="tag">ROS2</span>
-            <span class="tag">Raspberry Pi</span>
-            <span class="tag">Arduino</span>
-            <span class="tag">Computer Vision</span>
-            <span class="tag">3D Printing</span>
-            <span class="tag">CAD</span>
-          </div>
+          <h3 class="card-title">London Neurotech Hackathon</h3>
+          <p class="card-desc">Built EEG-powered digital art at Imperial College. Brain signals control brush color and size in real time.</p>
+          <div class="tags"><span class="tag">EEG</span><span class="tag">Neurotech</span><span class="tag">BCI</span><span class="tag">Python</span></div>
+          <p class="card-meta">2026 · Imperial College London</p>
         </div>
       </div>
 
-      <!-- 2. BARK Robot Dog -->
-      <div class="card">
+      <div class="card" data-id="amld">
         <div class="card-media">
-          <img src="Assets/BARK.jpg" alt="BARK robot dog" loading="lazy" />
+          <img src="Assets/hackathon_events/AMLD.jpeg" alt="AMLD Intelligence Summit" loading="lazy"/>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">BARK Robot Dog — EPFL AI Team</h3>
-          <p class="card-desc">Leading a team of 12 to build a quadruped robot dog based on the DINGO platform. The dog is trained to perform tricks using reinforcement learning. Responsible for mechatronics.</p>
-          <div class="tags">
-            <span class="tag">ROS</span>
-            <span class="tag">Reinforcement Learning</span>
-            <span class="tag">Electronics</span>
-            <span class="tag">CAD</span>
-            <span class="tag">3D Printing</span>
-          </div>
+          <h3 class="card-title">AMLD Intelligence Summit</h3>
+          <p class="card-desc">Presented the BARK quadruped robot project with the EPFL AI Team at AMLD.</p>
+          <div class="tags"><span class="tag">Robotics</span><span class="tag">Public Speaking</span><span class="tag">EPFL AI Team</span></div>
+          <p class="card-meta">2026 · EPFL, Lausanne</p>
         </div>
       </div>
 
-      <!-- 3. Robopoly -->
-      <div class="card">
+      <div class="card" data-id="sbb-hackathon">
         <div class="card-media">
-          <video muted loop playsinline preload="none" data-lazy>
-            <source src="Assets/Robopoly.mp4" type="video/mp4" />
-          </video>
+          <img src="Assets/hackathon_events/SBB.jpeg" alt="SBB Railway Hackathon" loading="lazy"/>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Small Mobile Robot — Robopoly</h3>
-          <p class="card-desc">Designed, built, wired and programmed a small mobile robot with IR sensor at EPFL's robotics makerspace.</p>
-          <div class="tags">
-            <span class="tag">Arduino</span>
-            <span class="tag">Electronics</span>
-            <span class="tag">CAD</span>
-          </div>
+          <h3 class="card-title">Railway Talent Hub Hackathon</h3>
+          <p class="card-desc">Used AI to optimize SBB public transit network at Hack the Tracks in Bern.</p>
+          <div class="tags"><span class="tag">AI</span><span class="tag">Optimization</span><span class="tag">Public Transit</span></div>
+          <p class="card-meta">2026 · SBB, Bern</p>
         </div>
       </div>
 
-      <!-- 4. Drone -->
-      <div class="card">
+      <!-- 2025 events -->
+      <div class="card" data-id="srd">
         <div class="card-media">
-          <video muted loop playsinline preload="none" data-lazy>
-            <source src="Assets/drone.mp4" type="video/mp4" />
-          </video>
+          <img src="Assets/hackathon_events/SRD.JPG" alt="Swiss Robotics Day" loading="lazy"/>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Autonomous Drone Navigation</h3>
-          <p class="card-desc">Programmed a small drone in a team of 5 to autonomously navigate a maze, land on a pad, and return to its starting position. Designed the main Finite State Machine.</p>
-          <div class="tags">
-            <span class="tag">FSM</span>
-            <span class="tag">Dijkstra</span>
-            <span class="tag">Cost Map</span>
-            <span class="tag">Python</span>
-          </div>
+          <h3 class="card-title">Swiss Robotics Day</h3>
+          <p class="card-desc">Had a booth at SRD and showcased BARK quadruped robots (DINGO and Pupper) to researchers and industry.</p>
+          <div class="tags"><span class="tag">Robotics</span><span class="tag">Event Organizing</span><span class="tag">EPFL AI Team</span></div>
+          <p class="card-meta">2025 · Switzerland</p>
         </div>
       </div>
 
-      <!-- 5. FPGA -->
-      <div class="card">
+      <div class="card" data-id="hack-a-health">
         <div class="card-media">
-          <video muted loop playsinline preload="none" data-lazy>
-            <source src="Assets/vhdl.mp4" type="video/mp4" />
-          </video>
+          <img src="Assets/hackathon_events/Hack-a-health.jpeg" alt="Hack-a-Health" loading="lazy"/>
+          <div class="card-overlay"><span class="card-overlay-hint">Click for details</span></div>
         </div>
         <div class="card-body">
-          <h3 class="card-title">Accelerometer & VGA for FPGA</h3>
-          <p class="card-desc">Developed an interface for the VGA display and accelerometer on the DE10-Lite FPGA board. The work is now used in EPFL's Digital Logic curriculum.</p>
-          <div class="tags">
-            <span class="tag">VHDL</span>
-            <span class="tag">SPI</span>
-            <span class="tag">VGA</span>
-            <span class="tag">Digital Logic</span>
-          </div>
+          <h3 class="card-title">Hack-a-Health</h3>
+          <p class="card-desc">Designed and built a structural lift to safely support a wheelchair user using aluminum framing.</p>
+          <div class="tags"><span class="tag">Mechanical Design</span><span class="tag">Accessibility</span><span class="tag">Aluminum Fabrication</span></div>
+          <p class="card-meta">2025</p>
         </div>
       </div>
 
-      <!-- 6. Thymio -->
-      <div class="card">
-        <div class="card-media">
-          <video muted loop playsinline preload="none" data-lazy>
-            <source src="Assets/Thymio.mp4" type="video/mp4" />
-          </video>
+    </div>
+  </section>
+
+  <!-- INTERESTS -->
+  <section id="interests" class="section-wrap" style="max-width:1200px">
+    <h2 class="section-title">Interests</h2>
+    <div class="interests-grid">
+
+      <div class="interest-card">
+        <div class="interest-img">
+          <img src="Assets/woodworking.jpeg" alt="Woodworking table" loading="lazy"/>
         </div>
-        <div class="card-body">
-          <h3 class="card-title">Autonomous Mobile Robot</h3>
-          <p class="card-desc">Programmed a robot in a team of 4 to avoid obstacles and navigate to a goal, localizing itself even after being moved or when the camera is blocked. Led localization and computer vision.</p>
-          <div class="tags">
-            <span class="tag">Kalman Filter</span>
-            <span class="tag">Dijkstra</span>
-            <span class="tag">Computer Vision</span>
-          </div>
+        <div class="interest-body">
+          <h3 class="interest-title">Woodworking</h3>
+          <p class="interest-desc">I enjoy designing and building furniture from scratch. I have built a dining table, a tray, and a night stand for my apartment.</p>
         </div>
       </div>
 
-      <!-- 7. VR Game -->
-      <div class="card">
-        <div class="card-media">
-          <video muted loop playsinline preload="none" data-lazy>
-            <source src="Assets/VR.mp4" type="video/mp4" />
-          </video>
+      <div class="interest-card">
+        <div class="interest-img">
+          <img src="Assets/mountain.jpeg" alt="Mountain hiking" loading="lazy"/>
         </div>
-        <div class="card-body">
-          <h3 class="card-title">VR Game with Haptic Feedback</h3>
-          <p class="card-desc">Created a VR game with haptic feedback in a team of 4, targeting the Oculus Quest 2.</p>
-          <div class="tags">
-            <span class="tag">Unity</span>
-            <span class="tag">C#</span>
-            <span class="tag">Haptics</span>
-            <span class="tag">Oculus Quest 2</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- 8. ADA -->
-      <div class="card">
-        <div class="card-media">
-          <img src="Assets/ADA.png" alt="Applied Data Analysis project" loading="lazy" />
-        </div>
-        <div class="card-body">
-          <h3 class="card-title">Applied Data Analysis — Movies</h3>
-          <p class="card-desc">Analyzed American films to quantify what share of revenue comes from domestic vs. foreign markets, using OLS regression and exploratory analysis.</p>
-          <div class="tags">
-            <span class="tag">Data Analysis</span>
-            <span class="tag">OLS Regression</span>
-            <span class="tag">Machine Learning</span>
-            <span class="tag">Python</span>
-          </div>
-          <a href="https://epfl-ada.github.io/ada-2024-project-thelordsofdata/" target="_blank" rel="noopener" class="card-link">
-            Visit website
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+        <div class="interest-body">
+          <h3 class="interest-title">Hiking &amp; Nature</h3>
+          <p class="interest-desc">I spend as much time as I can outdoors. I enjoy multi-day hikes in the Alps and find that time in nature recharges me in a way nothing else does. I once volunteered to help a farmer for a week in the mountains.</p>
         </div>
       </div>
 
@@ -616,38 +722,317 @@
 
   <!-- FOOTER -->
   <footer>
-    <span class="footer-copy">© 2025 Loïc Finette</span>
+    <span class="footer-copy">© 2026 Loïc Finette</span>
     <div class="footer-links">
       <a href="https://github.com/lolothecoder" target="_blank" rel="noopener">GitHub</a>
       <a href="https://www.linkedin.com/in/lo%C3%AFc-finette" target="_blank" rel="noopener">LinkedIn</a>
     </div>
   </footer>
 
+  <!-- LIGHTBOX -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lightbox-backdrop" id="lightbox-backdrop"></div>
+    <button class="lightbox-close" id="lightbox-close" aria-label="Close">✕</button>
+    <img id="lightbox-img" class="lightbox-img" src="" alt="" />
+  </div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-backdrop" id="modal-backdrop"></div>
+    <div class="modal-box" id="modal-box">
+      <button class="modal-close" id="modal-close" aria-label="Close">✕</button>
+      <div class="modal-media-wrap" id="modal-media-wrap"></div>
+      <div class="modal-gallery-nav hidden" id="modal-gallery-nav">
+        <button class="modal-nav-btn" id="modal-prev">← Prev</button>
+        <span class="modal-nav-count" id="modal-nav-count"></span>
+        <button class="modal-nav-btn" id="modal-next">Next →</button>
+      </div>
+      <div class="modal-content">
+        <h2 class="modal-title" id="modal-title"></h2>
+        <p class="modal-meta" id="modal-meta"></p>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="tags" id="modal-tags"></div>
+        <div id="modal-links"></div>
+      </div>
+    </div>
+  </div>
+
   <script>
+    const DATA = {
+      bark: {
+        title: 'BARK — EPFL AI Team',
+        meta: 'Team Lead · 12 students · 10,000 CHF budget',
+        desc: `Leading a team of 12 students to build two quadruped robots from Stanford. Currently leading the design and prototyping of a fully custom robot called Byte.
+
+Managing a 10,000 CHF budget, evaluating motor specs, sensor choices, and structural materials to balance performance and cost. Overseeing system-level design to ensure the mechanical frame, PCBs, and software all interface correctly.
+
+The robots are being trained to perform tricks using reinforcement learning. Responsible for creating and maintaining the team's technical documentation website, ensuring knowledge is accessible and preserved as team members change.`,
+        media: [
+          { type: 'video', src: 'Assets/BARK_promotional.mp4' },
+          { type: 'image', src: 'Assets/BARK_TestSetupReal.jpeg', alt: 'BARK test setup' },
+          { type: 'image', src: 'Assets/BARK_Carbon_leg.jpeg', alt: 'BARK carbon fibre leg' },
+          { type: 'image', src: 'Assets/BARK_wooden_leg.jpg', alt: 'BARK wooden leg prototype' }
+        ],
+        tags: ['ROS', 'Reinforcement Learning', 'Electronics', 'CAD', '3D Printing', 'Project Management', 'Systems Engineering'],
+        links: [{ label: 'Documentation website', href: 'https://bark-documentation.readthedocs.io/en/latest/' }]
+      },
+      robotics: {
+        title: 'Autonomous Robotics Competition',
+        meta: 'Team of 3 · Budget: 2250 CHF',
+        desc: `Built a fully autonomous robot to pick up and unload Lego blocks in a competition arena, with a strict 2250 CHF budget.
+
+Responsible for the full electronics stack: wiring harness design, sensor selection, and low-level firmware. The system used a Raspberry Pi running ROS2 as the main computer, with an Arduino handling real-time motor control and sensor reading. A camera module enabled computer vision for detecting and localizing Lego pieces.
+
+The mechanical structure was designed in Fusion 360 and fabricated using 3D printing and laser cutting. Machine learning was used for object detection in the vision pipeline.`,
+        media: [
+          { type: 'video', src: 'https://github.com/lolothecoder/BARK_Documentation/releases/download/v1.0/VeniVidiVici.mp4' },
+          { type: 'image', src: 'Assets/VVV_team.jpeg', alt: 'Team Veni Vidi Vici' },
+          { type: 'image', src: 'Assets/VVV_robot.jpeg', alt: 'Veni Vidi Vici robot' }
+        ],
+        tags: ['ROS2', 'Raspberry Pi', 'Arduino', 'Computer Vision', 'Machine Learning', '3D Printing', 'Laser Cutting', 'CAD'],
+        links: [{ label: 'Competition website', href: 'https://robot-competition.epfl.ch/' }]
+      },
+      xplore: {
+        title: 'EPFL Xplore — Mars Rover Avionics',
+        meta: 'EPFL Xplore · 60+ person team · European Rover Challenge',
+        desc: `Collaborated within a 60+ person team to develop a Mars-style rover for the European Rover Challenge (ERC) in Poland.
+
+Redesigned the main Avionics board (Lyra), serving as the rover's central communication hub. The board ensures all sensors and subsystems can communicate reliably via Ethernet, USB-C, SPI, USART and I2C`,
+        media: [
+          { type: 'image', src: 'Assets/Xplore_Lyra_front.png', alt: 'Lyra Avionics board front' },
+          { type: 'image', src: 'Assets/Xplore_Lyra_back.png', alt: 'Lyra Avionics board back' }
+        ],
+        tags: ['STM32', 'micro-ROS', 'PCB Design', 'KiCAD', 'Ethernet', 'SPI', 'I2C'],
+        links: []
+      },
+      robopoly: {
+        title: 'Small Mobile Robot — Robopoly',
+        meta: 'Individual project · EPFL Robopoly makerspace',
+        desc: `Designed, built, wired, and programmed a small mobile robot with IR sensors at Robopoly, EPFL's robotics makerspace.
+
+The project allowed me to learn the basics of electronics and was my first robot that I built. The robot uses an IR sensor array for obstacle detection and line following, with a custom chassis designed in CAD.`,
+        media: [{ type: 'video', src: 'Assets/Robopoly.mp4' }],
+        tags: ['Arduino', 'Electronics', 'CAD', 'IR Sensing', 'Embedded C'],
+        links: []
+      },
+      drone: {
+        title: 'Autonomous Drone Navigation',
+        meta: 'Team of 5',
+        desc: `Programmed a Crazyflie nano-drone to autonomously navigate through a maze with obstacles, locate and land on a landing pad, then return to its starting position without any external tracking. Got full marks on the hardware implementation.
+
+Designed the main Finite State Machine (FSM) governing all flight phases: takeoff, exploration, landing approach, and return. Path planning used a Dijkstra algorithm on a cost map built from on-board sensor readings. The drone relied entirely on its own sensors for navigation.`,
+        media: [{ type: 'video', src: 'Assets/drone.mp4' }],
+        tags: ['FSM', 'Dijkstra', 'Cost Map', 'Python', 'Path Planning', 'Sensor Fusion'],
+        links: []
+      },
+      fpga: {
+        title: 'Accelerometer & VGA for FPGA',
+        meta: 'DE10-Lite FPGA (Intel Cyclone V) · Now in EPFL curriculum',
+        desc: `Developed a VHDL interface for the VGA display controller and ADXL345 accelerometer on the DE10-Lite FPGA board.
+
+The accelerometer communicates over SPI, implemented entirely in hardware-level VHDL. Readings are visualized in real time on a VGA monitor through a custom graphics pipeline with full timing control.
+
+The project is now incorporated into EPFL's Digital Logic course as a student lab assignment, used by students in their projects.`,
+        media: [{ type: 'video', src: 'Assets/vhdl.mp4' }],
+        tags: ['VHDL', 'SPI', 'VGA', 'FPGA', 'Digital Logic', 'DE10-Lite'],
+        links: []
+      },
+      thymio: {
+        title: 'Autonomous Mobile Robot',
+        meta: 'Team of 4 · Led localization and computer vision',
+        desc: `Programmed a Thymio robot to navigate to a goal while avoiding obstacles. Key challenge: the robot had to re-localize itself even after being physically moved, or when the overhead camera was blocked.
+
+Used an Extended Kalman Filter (EKF) fusing wheel odometry and camera-based position estimates. Path planning used Dijkstra on a grid map. The computer vision pipeline detected the robot's heading from an overhead camera, with fallback localization when the feed was unavailable.`,
+        media: [{ type: 'video', src: 'Assets/Thymio.mp4' }],
+        tags: ['Kalman Filter', 'Dijkstra', 'Computer Vision', 'Python', 'EKF', 'Localization'],
+        links: []
+      },
+      vr: {
+        title: 'VR Game with Haptic Feedback',
+        meta: 'Team of 4 · Oculus Quest 2',
+        desc: `Created a VR game with physical haptic feedback in a team of 4, built in Unity for the Oculus Quest 2.
+
+The game integrates custom haptic controllers that provide tactile feedback synchronized with in-game events. Core mechanics and the haptic system were implemented in C# using the Oculus SDK. The project explored real-time 3D game design, VR interaction models, and physical hardware integration.`,
+        media: [{ type: 'video', src: 'Assets/VR.mp4' }],
+        tags: ['Unity', 'C#', 'Haptics', 'Oculus Quest 2', 'VR', 'Game Development'],
+        links: []
+      },
+      ada: {
+        title: 'Applied Data Analysis — Movies',
+        meta: 'EPFL ADA course · Published as interactive data story',
+        desc: `Analyzed American films from the CMU Movie Summary Corpus to quantify what share of box office revenue comes from domestic vs. foreign markets, and what factors explain that split.
+
+Built OLS regression models identifying key predictors of foreign market performance: genre, language, release timing, and production budget. Combined exploratory data analysis and visualization into a published interactive data story.`,
+        media: [{ type: 'image', src: 'Assets/ADA.png', alt: 'Applied Data Analysis' }],
+        tags: ['Data Analysis', 'OLS Regression', 'Machine Learning', 'Python', 'EDA', 'Statistics'],
+        links: [{ label: 'Visit website', href: 'https://epfl-ada.github.io/ada-2024-project-thelordsofdata/' }]
+      },
+      'eeg-hackathon': {
+        title: 'London Neurotech Hackathon',
+        meta: '2026 · Imperial College Neurotech Society · London',
+        desc: `Participated in the London Neurotech Hackathon with a team of 4, hosted by the Imperial College Neurotech Society.
+
+We worked with the Unicorn Hybrid Black EEG headset by g.tec medical engineering, aiming to enable people with reduced mobility to create digital art using only their brain signals.
+
+For our demo, the brush follows a random path while real-time alpha band activity controls both color and size:
+- Eyes closed: increased alpha power, large blue brush
+- Eyes open: decreased alpha power, small red brush
+
+By modulating their brain activity, users directly influence the visual output, turning neural oscillations into creative expression. My first time working with an EEG system.`,
+        media: [{ type: 'image', src: 'Assets/hackathon_events/EEG_team.jpg', alt: 'London Neurotech Hackathon team' }],
+        tags: ['EEG', 'Neurotech', 'BCI', 'Python', 'Alpha Band', 'Accessibility'],
+        links: []
+      },
+      amld: {
+        title: 'AMLD Intelligence Summit',
+        meta: '2026 · Applied Machine Learning Days · EPFL, Lausanne',
+        desc: `Presented the BARK quadruped robot project with a colleague from the EPFL AI Team at the AMLD Intelligence Summit.
+
+Showcased the team's progress on building autonomous quadruped robots. A great opportunity to connect with researchers and practitioners in the ML and robotics space.`,
+        media: [{ type: 'image', src: 'Assets/hackathon_events/AMLD.jpeg', alt: 'AMLD presentation' }],
+        tags: ['Robotics', 'Machine Learning', 'Public Speaking', 'EPFL AI Team', 'BARK'],
+        links: []
+      },
+      'sbb-hackathon': {
+        title: 'Railway Talent Hub Hackathon 2026',
+        meta: '2026 · Hack the Tracks · SBB, Bern',
+        desc: `Participated in the Railway Talent Hub Hackathon 2026: Hack the Tracks at SBB headquarters in Bern over two days.
+
+Our team tackled the challenge of using AI to optimize the SBB public transit network, an exciting problem combining real-world constraints with algorithmic optimization. Great teamwork, inspiring ideas, and a challenging problem space.`,
+        media: [{ type: 'image', src: 'Assets/hackathon_events/SBB.jpeg', alt: 'SBB Railway Hackathon' }],
+        tags: ['AI', 'Optimization', 'Public Transit', 'Hackathon'],
+        links: []
+      },
+      srd: {
+        title: 'Swiss Robotics Day',
+        meta: '2025 · Switzerland',
+        desc: `Had a booth at the Swiss Robotics Day, an event bringing together researchers, industry leaders, and students to celebrate robotics innovation across Switzerland.
+
+The BARK Team showcased both quadruped robots (DINGO and PUPPER) on-site, demonstrating the team's work to the public and engaging with the broader Swiss robotics community.`,
+        media: [{ type: 'image', src: 'Assets/hackathon_events/SRD.JPG', alt: 'Swiss Robotics Day' }],
+        tags: ['Robotics', 'Event Organizing', 'EPFL AI Team', 'BARK', 'Public Outreach'],
+        links: []
+      },
+      'hack-a-health': {
+        title: 'Hack-a-Health',
+        meta: '2025 · Healthcare and Accessibility Hackathon',
+        desc: `Collaborated in a team to design and build a structural lift designed to safely support a wheelchair user.
+
+This was my first time working with aluminum to create a load-bearing structure for a real-world accessibility challenge. The project required thinking carefully about structural integrity, safety margins, and practical usability for the end user.`,
+        media: [{ type: 'image', src: 'Assets/hackathon_events/Hack-a-health.jpeg', alt: 'Hack-a-Health' }],
+        tags: ['Mechanical Design', 'Accessibility', 'Aluminum Fabrication', 'Healthcare'],
+        links: []
+      }
+    };
+
+    // Modal logic
+    const modal      = document.getElementById('modal');
+    const modalBox   = document.getElementById('modal-box');
+    const closeBtn   = document.getElementById('modal-close');
+    const backdrop   = document.getElementById('modal-backdrop');
+    const mediaWrap  = document.getElementById('modal-media-wrap');
+    const galleryNav = document.getElementById('modal-gallery-nav');
+    const prevBtn    = document.getElementById('modal-prev');
+    const nextBtn    = document.getElementById('modal-next');
+    const navCount   = document.getElementById('modal-nav-count');
+    const titleEl    = document.getElementById('modal-title');
+    const metaEl     = document.getElementById('modal-meta');
+    const descEl     = document.getElementById('modal-desc');
+    const tagsEl     = document.getElementById('modal-tags');
+    const linksEl    = document.getElementById('modal-links');
+
+    let currentMedia = [], mediaIndex = 0;
+
+    function renderMedia(idx) {
+      const old = mediaWrap.querySelector('video');
+      if (old) old.pause();
+      mediaWrap.innerHTML = '';
+      const item = currentMedia[idx];
+      if (item.type === 'video') {
+        const v = document.createElement('video');
+        v.src = item.src; v.autoplay = true; v.muted = true;
+        v.loop = true; v.playsInline = true; v.controls = true;
+        mediaWrap.appendChild(v);
+      } else {
+        const img = document.createElement('img');
+        img.src = item.src; img.alt = item.alt || '';
+        mediaWrap.appendChild(img);
+      }
+      if (currentMedia.length > 1) {
+        galleryNav.classList.remove('hidden');
+        navCount.textContent = `${idx + 1} / ${currentMedia.length}`;
+      } else {
+        galleryNav.classList.add('hidden');
+      }
+    }
+
+    function openModal(id) {
+      const d = DATA[id];
+      if (!d) return;
+      currentMedia = d.media; mediaIndex = 0;
+      renderMedia(0);
+      titleEl.textContent = d.title;
+      metaEl.textContent = d.meta || '';
+      descEl.textContent = d.desc;
+      tagsEl.innerHTML = d.tags.map(t => `<span class="tag">${t}</span>`).join('');
+      linksEl.innerHTML = (d.links || []).map(l =>
+        `<a class="modal-link" href="${l.href}" target="_blank" rel="noopener">${l.label} <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>`
+      ).join('');
+      modal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      modalBox.scrollTop = 0;
+    }
+
+    function closeModal() {
+      const v = mediaWrap.querySelector('video');
+      if (v) v.pause();
+      modal.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    prevBtn.addEventListener('click', () => { mediaIndex = (mediaIndex - 1 + currentMedia.length) % currentMedia.length; renderMedia(mediaIndex); });
+    nextBtn.addEventListener('click', () => { mediaIndex = (mediaIndex + 1) % currentMedia.length; renderMedia(mediaIndex); });
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    document.querySelectorAll('.card[data-id]').forEach(c => c.addEventListener('click', () => openModal(c.dataset.id)));
+
     // Nav border on scroll
     const nav = document.getElementById('main-nav');
-    window.addEventListener('scroll', () => {
-      nav.classList.toggle('scrolled', window.scrollY > 20);
-    }, { passive: true });
+    window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 20), { passive: true });
 
-    // Lazy-load & autoplay videos via IntersectionObserver
-    const videos = document.querySelectorAll('video[data-lazy]');
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const video = entry.target;
-        if (entry.isIntersecting) {
-          if (!video.src && video.querySelector('source')) {
-            // trigger load
-            video.load();
-          }
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
+    // Interest image lightbox
+    const lightbox     = document.getElementById('lightbox');
+    const lightboxImg  = document.getElementById('lightbox-img');
+    const lightboxClose = document.getElementById('lightbox-close');
+    const lightboxBg   = document.getElementById('lightbox-backdrop');
+
+    function openLightbox(src, alt) {
+      lightboxImg.src = src; lightboxImg.alt = alt || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightboxBg.addEventListener('click', closeLightbox);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+    document.querySelectorAll('.interest-img').forEach(wrap => {
+      const img = wrap.querySelector('img');
+      if (img) wrap.addEventListener('click', () => openLightbox(img.src, img.alt));
+    });
+
+    // Lazy-load card videos
+    const vidObserver = new IntersectionObserver(entries => {
+      entries.forEach(({ target: v, isIntersecting }) => {
+        if (isIntersecting) { if (!v.src) v.load(); v.play().catch(() => {}); }
+        else { v.pause(); }
       });
     }, { threshold: 0.25 });
-
-    videos.forEach(v => observer.observe(v));
+    document.querySelectorAll('video[data-lazy]').forEach(v => vidObserver.observe(v));
   </script>
 
 </body>
