@@ -342,7 +342,7 @@
         </div>
         <div class="card-body">
           <h3 class="card-title">Autonomous Mobile Robot</h3>
-          <p class="card-desc">Robot that navigates and re-localizes itself even when moved or camera-blocked. Led localization and CV.</p>
+          <p class="card-desc">Robot that navigates and re-localizes itself even when moved or camera-blocked.</p>
           <div class="tags"><span class="tag">Kalman Filter</span><span class="tag">Dijkstra</span><span class="tag">Computer Vision</span></div>
         </div>
       </div>
@@ -810,7 +810,7 @@ Redesigned the main Avionics board (Lyra), serving as the rover's central commun
         meta: 'Individual project · EPFL Robopoly makerspace',
         desc: `Designed, built, wired, and programmed a small mobile robot with IR sensors at Robopoly, EPFL's robotics makerspace.
 
-The project allowed me to learn the basics of electronics and was my first robot that I built. The robot has an IR sensor to detect objects in front of him`,
+The project allowed me to learn the basics of electronics and was my first robot that I built. The robot has an IR sensor to detect objects in front of him.`,
         media: [{ type: 'video', src: 'Assets/Robopoly.mp4' }],
         tags: ['Arduino', 'Electronics', 'CAD', 'IR Sensing', 'Embedded C'],
         links: []
@@ -839,7 +839,7 @@ The project is now incorporated into EPFL's Digital Logic course as a student la
       },
       thymio: {
         title: 'Autonomous Mobile Robot',
-        meta: 'Team of 4 · Led localization and computer vision',
+        meta: 'Team of 4 - Responsible for EKF',
         desc: `Programmed a Thymio robot to navigate to a goal while avoiding obstacles. Key challenge: the robot had to re-localize itself even after being physically moved, or when the overhead camera was blocked.
 
 Used an Extended Kalman Filter (EKF) fusing wheel odometry and camera-based position estimates. Path planning used Dijkstra on a grid map. The computer vision pipeline detected the robot's heading from an overhead camera, with fallback localization when the feed was unavailable.`,
